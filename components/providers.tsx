@@ -1,9 +1,9 @@
 'use client';
 
-import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiProvider, http, createConfig } from 'wagmi'
 import { mainnet, sepolia } from 'wagmi/chains'
-import { coinbaseWallet, injected, metaMask  } from 'wagmi/connectors'
+import { coinbaseWallet, injected, metaMask } from 'wagmi/connectors'
 // import {http} from 'viem';
 // import {mainnet, sepolia} from 'viem/chains';
 
@@ -39,7 +39,7 @@ export const wagmiConfig = createConfig({
   chains: [mainnet, sepolia],
   connectors: [
     injected(),
-    metaMask(),
+    // metaMask(),
     coinbaseWallet(),
   ],
   transports: {
@@ -50,7 +50,7 @@ export const wagmiConfig = createConfig({
 
 
 
-export default function Providers({children}: {children: React.ReactNode}) {
+export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     // <PrivyProvider
     //   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -59,11 +59,11 @@ export default function Providers({children}: {children: React.ReactNode}) {
     //   appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID as string}
     //   config={privyConfig}
     // >
-      <QueryClientProvider client={queryClient}>
-        <WagmiProvider config={wagmiConfig} reconnectOnMount={false}>
-          {children}
-        </WagmiProvider>
-      </QueryClientProvider>
+    <QueryClientProvider client={queryClient}>
+      <WagmiProvider config={wagmiConfig} reconnectOnMount={false}>
+        {children}
+      </WagmiProvider>
+    </QueryClientProvider>
     // </PrivyProvider>
   );
 }

@@ -9,11 +9,27 @@ export function useMyWallet() {
     setShowModal(true);
   };
 
-  const handleEmailSubmit = (email: string) => {
-    // Implement your email login logic here
-    console.log('Logging in with email:', email);
-    setAuthenticated(true);
-    setShowModal(false);
+  const handleEmailSubmit = async (email: string) => {
+    try {
+      const response = await fetch('/api/send-otp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send OTP' + response.text + 'koza');
+      }
+
+      console.log('OTP sent to email:', email);
+      setAuthenticated(false);
+      setShowModal(false);
+    } catch (error) {
+      console.error('Error sending OTP:', error);
+      // Handle error (e.g., show error message to user)
+    }
   };
 
   useEffect(() => {

@@ -28,7 +28,7 @@ import { useAccount, useDisconnect } from 'wagmi';
 
 import { useMyWallet } from '../hooks/useMyWallet';
 
-import wagmiPrivyLogo from '../public/wagmi_privy_logo.png';
+import wagmiShewLogo from '../public/wagmi_privy_logo.png';
 
 import EmailLoginModal from '../components/EmailLoginModal';
 
@@ -56,12 +56,12 @@ export default function Home() {
         </p>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
           <div className="border-1 flex flex-col items-start gap-2 rounded border border-black bg-slate-100 p-3">
-            <h1 className="text-4xl font-bold">Privy</h1>
+            <h1 className="text-4xl font-bold">Shew</h1>
             {ready && !authenticated && (
               <>
-                <p>You are not authenticated with Privy</p>
+                <p>You are not authenticated with Shew</p>
                 <div className="flex items-center gap-4">
-                  <Button onClick_={login} cta="Login with Privy" />
+                  <Button onClick_={login} cta="Login with Shew" />
                   <span>or</span>
                   {/* <Button onClick_={connectWallet} cta="Connect only" /> */}
                 </div>
@@ -107,7 +107,7 @@ export default function Home() {
                   disabled
                 />
                 <br />
-                <Button onClick_={logout} cta="Logout from Privy" />
+                <Button onClick_={logout} cta="Logout from Shew" />
               </>
             )}
           </div>
